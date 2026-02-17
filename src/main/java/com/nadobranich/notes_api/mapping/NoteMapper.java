@@ -3,7 +3,9 @@ package com.nadobranich.notes_api.mapping;
 import com.nadobranich.notes_api.domain.NoteDto;
 import com.nadobranich.notes_api.domain.NoteEntity;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NoteMapper implements Mapper<NoteEntity, NoteDto> {
 
     private ModelMapper modelMapper;
