@@ -38,12 +38,12 @@ public class NotesController {
     }
 
     @PutMapping(path="/{id}")
-    public ResponseEntity<NoteDto> updateNote(@PathVariable int id, @RequestBody String newContent){
+    public ResponseEntity<NoteDto> updateNote(@PathVariable int id, @RequestBody NoteDto noteDto){
         // if the note was found: updates, returns the updated note, status 200
         // if the note wasn't found: returns status 404
 
         try {
-            NoteEntity updatedNote = notesService.updateNote(id, newContent);
+            NoteEntity updatedNote = notesService.updateNote(id, noteDto.getContent());
             return new ResponseEntity<>(noteMapper.mapTo(updatedNote), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
